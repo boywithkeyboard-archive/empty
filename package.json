@@ -1,6 +1,6 @@
 {
   "name": "@unvented/empty",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Empty a directory.",
   "author": "Samuel Kopp <opensource@azury.dev> (https://azury.dev)",
   "bin": {
