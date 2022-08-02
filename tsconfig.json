@@ -1,0 +1,6 @@
+{
+  "extends": "@azury/style/typescript",
+  "include": [
+    "**/*.ts"
+  ]
+}
