@@ -9,5 +9,5 @@ npm i -D @unvented/empty
 ### Usage
 
 ```bash
-empty dist
+empty foo bar
 ```
