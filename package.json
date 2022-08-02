@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint src",
     "format": "eslint src --fix",
-    "build": "rimraf dist && esbuild src/index.ts --format=esm --bundle --minify --platform=node --outfile=dist/index.js",
+    "build": "esbuild src/index.ts --format=esm --bundle --minify --platform=node --outfile=dist/index.js",
     "release": "npm run lint && npm run build && npm publish --access public"
   },
   "license": "Apache-2.0",
@@ -26,7 +26,6 @@
     "esbuild": "^0.14.51",
     "eslint": "^8.21.0",
     "minimist": "^1.2.6",
-    "rimraf": "^3.0.2",
     "typescript": "^4.7.4"
   },
   "engines": {
