@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { unlink } from 'fs/promises'
 import { join } from 'path'
 import files from '@unvented/files'
