@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { mkdir, stat, unlink } from 'node:fs/promises'
+import { lstat, mkdir, readdir, rmdir, stat, unlink } from 'node:fs/promises'
 import { join } from 'node:path'
 import files from '@unvented/files'
 import minimist from 'minimist'
@@ -10,23 +10,22 @@ import minimist from 'minimist'
 
   const stats = async (path: string) => {
     try {
-      const s = await stat(path)
-  
-      return s
+      return await stat(path)
     } catch (err) {
       return undefined
     }
   }
 
   for (let directory of argv._) {
-    directory = join(process.cwd(), directory.startsWith('./') ? directory : `./${directory}`)
+    directory = join(process.cwd(), directory.startsWith('./') || directory.startsWith('../') ? directory : `./${directory}`)
 
-    if (!(await stats(directory))?.isDirectory())
+    if (!(await stats(directory))?.isDirectory()) {
       await mkdir(directory, {
         recursive: true
       })
-    else
+    } else {
       for await (const file of files(directory))
         await unlink(file)
+    }
   }
 })()
