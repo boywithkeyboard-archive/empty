@@ -12,15 +12,14 @@
     "build": "esbuild src/index.ts --format=esm --bundle --minify --platform=node --outfile=dist/index.js",
     "release": "npm run lint && npm run build && npm publish --access public"
   },
-  "license": "Apache-2.0",
+  "license": "MIT",
   "repository": "unvented/empty",
   "bugs": "https://github.com/unvented/empty/issues",
   "homepage": "https://github.com/unvented/empty#readme",
   "devDependencies": {
     "@azury/eslint-config": "^1.0.3",
     "@azury/style": "^1.0.0",
-    "@changesets/changelog-github": "^0.4.6",
-    "@changesets/cli": "^2.24.2",
+    "@types/minimist": "^1.2.2",
     "@types/node": "^18.6.4",
     "@unvented/files": "^1.0.1",
     "esbuild": "^0.14.53",
