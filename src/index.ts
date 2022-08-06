@@ -15,6 +15,27 @@ import minimist from 'minimist'
       return undefined
     }
   }
+  
+  const removeEmptyDirectories = async (directory: string) => {
+    const stats = await lstat(directory)
+
+    if (!stats.isDirectory()) return
+
+    let fileNames = await readdir(directory)
+
+    if (fileNames.length > 0) {
+      const recursiveRemovalPromises = fileNames.map(
+        fileName => removeEmptyDirectories(join(directory, fileName))
+      )
+
+      await Promise.all(recursiveRemovalPromises)
+
+      fileNames = await readdir(directory)
+    }
+
+    if (fileNames.length === 0)
+      await rmdir(directory)
+  }
 
   for (let directory of argv._) {
     directory = join(process.cwd(), directory.startsWith('./') || directory.startsWith('../') ? directory : `./${directory}`)
@@ -26,6 +47,9 @@ import minimist from 'minimist'
     } else {
       for await (const file of files(directory))
         await unlink(file)
+
+      await removeEmptyDirectories(directory)
+      await mkdir(directory)
     }
   }
 })()
