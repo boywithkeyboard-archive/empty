@@ -1,5 +1,17 @@
 # @unvented/empty
 
+## v1.0.3
+
+### Bug Fixes
+
+- allow specification of paths starting with `../`
+- delete empty directories
+
+### Changes
+
+- remove changesets
+- change license to the **MIT License**
+
 ## v1.0.2
 
 ### Bug Fixes
