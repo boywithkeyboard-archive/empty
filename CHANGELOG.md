@@ -1,5 +1,11 @@
 # @unvented/empty
 
+## v1.0.4
+
+### Changes
+
+- bump dependencies (once a month)
+
 ## v1.0.3
 
 ### Bug Fixes
