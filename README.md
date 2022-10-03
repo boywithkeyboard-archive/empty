@@ -11,3 +11,9 @@ npm i -D @unvented/empty
 ```bash
 empty foo bar
 ```
+
+```js
+import { emptyDirectories } from '@unvented/empty'
+
+await emptyDirectories('./foo', './bar')
+```
