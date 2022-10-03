@@ -3,7 +3,7 @@
 ### Installation
 
 ```bash
-npm i -D @unvented/empty
+npm i @unvented/empty
 ```
 
 ### Usage
