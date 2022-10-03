@@ -1,45 +1,38 @@
-#!/usr/bin/env node
-
 import { lstat, mkdir, readdir, rmdir, stat, unlink } from 'node:fs/promises'
 import { join } from 'node:path'
 import files from '@unvented/files'
-import minimist from 'minimist'
 
-(async () => {
-  const argv = minimist(process.argv.slice(2))
-
-  const stats = async (path: string) => {
-    try {
-      return await stat(path)
-    } catch (err) {
-      return undefined
-    }
+const stats = async (path: string) => {
+  try {
+    return await stat(path)
+  } catch (err) {
+    return undefined
   }
-  
-  const removeEmptyDirectories = async (directory: string) => {
-    const stats = await lstat(directory)
+}
 
-    if (!stats.isDirectory()) return
+, removeEmptyDirectories = async (directory: string) => {
+  const stats = await lstat(directory)
 
-    let fileNames = await readdir(directory)
+  if (!stats.isDirectory()) return
 
-    if (fileNames.length > 0) {
-      const recursiveRemovalPromises = fileNames.map(
-        fileName => removeEmptyDirectories(join(directory, fileName))
-      )
+  let fileNames = await readdir(directory)
 
-      await Promise.all(recursiveRemovalPromises)
+  if (fileNames.length > 0) {
+    const recursiveRemovalPromises = fileNames.map(
+      fileName => removeEmptyDirectories(join(directory, fileName))
+    )
 
-      fileNames = await readdir(directory)
-    }
+    await Promise.all(recursiveRemovalPromises)
 
-    if (fileNames.length === 0)
-      await rmdir(directory)
+    fileNames = await readdir(directory)
   }
 
-  for (let directory of argv._) {
-    directory = join(process.cwd(), directory.startsWith('./') || directory.startsWith('../') ? directory : `./${directory}`)
+  if (fileNames.length === 0)
+    await rmdir(directory)
+}
 
+export const emptyDirectories = async (...entries: string[]) => {
+  for (const directory of entries) {
     if (!(await stats(directory))?.isDirectory()) {
       await mkdir(directory, {
         recursive: true
@@ -52,4 +45,4 @@ import minimist from 'minimist'
       await mkdir(directory)
     }
   }
-})()
+}
