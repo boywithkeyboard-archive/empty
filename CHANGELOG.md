@@ -1,5 +1,15 @@
 # @unvented/empty
 
+## v1.1.0
+
+### New Features
+
+- add JavaScript API
+
+### Changes
+
+- update website and email
+
 ## v1.0.4
 
 ### Changes

@@ -1,16 +1,18 @@
 {
   "name": "@unvented/empty",
-  "version": "1.0.4",
-  "description": "Empty a directory.",
-  "author": "Samuel Kopp <opensource@azury.dev> (https://azury.dev)",
+  "version": "1.1.0",
+  "description": "Delete all files in a directory.",
+  "author": "Samuel Kopp <opensource@samuelkopp.de> (https://samuelkopp.de)",
   "bin": {
-    "empty": "./dist/index.js"
+    "empty": "./dist/bin.js"
   },
+  "exports": "./dist/index.js",
+  "types": "./types/index.d.ts",
   "scripts": {
     "lint": "eslint src",
     "format": "eslint src --fix",
-    "build": "esbuild src/index.ts --format=esm --bundle --minify --platform=node --outfile=dist/index.js",
-    "release": "npm run lint && npm run build && npm publish --access public"
+    "build": "esbuild src/cli.ts --format=esm --bundle --minify --platform=node --outfile=dist/bin.js && esbuild src/index.ts --format=esm --bundle --minify --platform=node --outfile=dist/index.js",
+    "p": "npm run build && npm publish --access public"
   },
   "license": "MIT",
   "repository": "unvented/empty",
