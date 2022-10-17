@@ -24,7 +24,7 @@
     "@types/minimist": "^1.2.2",
     "@types/node": "^18.8.5",
     "@unvented/files": "^1.0.1",
-    "esbuild": "^0.15.10",
+    "esbuild": "^0.15.11",
     "eslint": "^8.25.0",
     "minimist": "^1.2.7",
     "typescript": "^4.8.4"
