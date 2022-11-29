@@ -19,7 +19,7 @@
   "bugs": "https://github.com/unvented/empty/issues",
   "homepage": "https://github.com/unvented/empty#readme",
   "devDependencies": {
-    "@azury/eslint-config": "^1.0.10",
+    "@azury/eslint-config": "^1.0.14",
     "@azury/style": "^1.0.0",
     "@types/minimist": "^1.2.2",
     "@types/node": "^18.11.9",
